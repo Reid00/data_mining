@@ -1,0 +1,65 @@
+,,count_nonzero
+,,Timestamp
+Country,Gender,
+Australia,female,5
+Australia,male,16
+Austria,male,3
+Belgium,female,2
+Belgium,male,4
+Bosnia and Herzegovina,male,1
+Brazil,male,6
+Bulgaria,female,1
+Bulgaria,male,3
+Canada,female,14
+Canada,male,56
+China,male,1
+Colombia,male,2
+Costa Rica,male,1
+Croatia,male,2
+Czech Republic,male,1
+Denmark,male,2
+Finland,male,3
+France,male,13
+Georgia,male,1
+Germany,female,1
+Germany,male,42
+Greece,male,2
+Hungary,female,1
+India,female,2
+India,male,8
+Ireland,female,4
+Ireland,male,23
+Israel,female,1
+Israel,male,4
+Italy,male,5
+Japan,male,1
+Latvia,male,1
+Mexico,male,3
+Moldova,male,1
+Netherlands,female,3
+Netherlands,male,24
+New Zealand,female,1
+New Zealand,male,7
+Nigeria,male,1
+Norway,male,1
+Philippines,male,1
+Poland,female,1
+Poland,male,6
+Portugal,male,2
+Romania,male,1
+Russia,male,2
+Singapore,male,4
+Slovenia,male,1
+South Africa,female,1
+South Africa,male,5
+Spain,female,1
+Sweden,female,2
+Sweden,male,5
+Switzerland,female,1
+Switzerland,male,6
+Thailand,male,1
+United Kingdom,female,26
+United Kingdom,male,153
+United States,female,175
+United States,male,550
+Uruguay,male,1

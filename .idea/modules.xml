@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/data_mining.iml" filepath="$PROJECT_DIR$/.idea/data_mining.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../data_process/.idea/data_process.iml" filepath="$PROJECT_DIR$/../data_process/.idea/data_process.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../demo/.idea/demo.iml" filepath="$PROJECT_DIR$/../demo/.idea/demo.iml" />
+    </modules>
+  </component>
+</project>
