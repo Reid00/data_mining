@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4683b68e-18b3-485c-b84e-a1369e490923" name="Default Changelist" comment="" />
+    <list default="true" id="4683b68e-18b3-485c-b84e-a1369e490923" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/code/text_similarity.py" beforeDir="false" afterPath="$PROJECT_DIR$/code/text_similarity.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/input/article.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/input/similarity1.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/input/similarity2.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/input/similarity3.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/doc3.txt" beforeDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,8 +35,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/code/text_mining.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="546">
-              <caret line="41" column="38" selection-start-line="41" selection-start-column="26" selection-end-line="41" selection-end-column="38" />
+            <state relative-caret-position="189">
+              <caret line="18" column="2" lean-forward="true" selection-start-line="18" selection-start-column="2" selection-end-line="18" selection-end-column="8" />
               <folding>
                 <element signature="e#0#12#0" expanded="true" />
               </folding>
@@ -37,13 +44,25 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/code/text_similarity.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="189">
-              <caret line="69" column="31" selection-start-line="69" selection-start-column="27" selection-end-line="69" selection-end-column="31" />
+            <state relative-caret-position="483">
+              <caret line="89" column="39" selection-start-line="89" selection-start-column="17" selection-end-line="89" selection-end-column="39" />
               <folding>
                 <element signature="e#179#227#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/code/chinese_similarity.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-405">
+              <caret line="38" column="14" lean-forward="true" selection-start-line="38" selection-start-column="14" selection-end-line="38" selection-end-column="14" />
+              <folding>
+                <element signature="e#0#12#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -72,6 +91,7 @@
         <option value="$PROJECT_DIR$/code/k-menas_exercise.py" />
         <option value="$PROJECT_DIR$/code/text_mining.py" />
         <option value="$PROJECT_DIR$/code/text_similarity.py" />
+        <option value="$PROJECT_DIR$/code/chinese_similarity.py" />
       </list>
     </option>
   </component>
@@ -93,11 +113,6 @@
             <path>
               <item name="data_mining" type="b2602c69:ProjectViewProjectNode" />
               <item name="data_mining" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="data_mining" type="b2602c69:ProjectViewProjectNode" />
-              <item name="data_mining" type="462c0819:PsiDirectoryNode" />
-              <item name="code" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="data_mining" type="b2602c69:ProjectViewProjectNode" />
@@ -136,8 +151,8 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.text_similarity">
-    <configuration name="copy_excel" type="PythonConfigurationType" factoryName="Python" temporary="true">
+  <component name="RunManager" selected="Python.chinese_similarity">
+    <configuration name="chinese_similarity" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="data_mining" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -150,7 +165,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/code/copy_excel.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/code/chinese_similarity.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -249,11 +264,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.chinese_similarity" />
         <item itemvalue="Python.text_similarity" />
         <item itemvalue="Python.text_mining" />
         <item itemvalue="Python.k-menas_exercise" />
         <item itemvalue="Python.get_first_col" />
-        <item itemvalue="Python.copy_excel" />
       </list>
     </recent_temporary>
   </component>
@@ -268,12 +283,12 @@
       <option name="presentableId" value="Default" />
       <updated>1565146864448</updated>
       <workItem from="1565146865725" duration="36981000" />
-      <workItem from="1565773212290" duration="32735000" />
+      <workItem from="1565773212290" duration="45998000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="69716000" />
+    <option name="totallyTimeSpent" value="82979000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -285,12 +300,12 @@
       <window_info anchor="bottom" id="Terminal" order="1" weight="0.32912844" />
       <window_info anchor="bottom" id="Event Log" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="3" />
-      <window_info anchor="bottom" id="Python Console" order="4" weight="0.37844038" />
+      <window_info anchor="bottom" id="Python Console" order="4" weight="0.5286697" />
       <window_info anchor="bottom" id="Docker" order="5" show_stripe_button="false" />
       <window_info anchor="bottom" id="Message" order="6" />
       <window_info anchor="bottom" id="Find" order="7" />
-      <window_info active="true" anchor="bottom" id="Run" order="8" visible="true" weight="0.51834863" />
-      <window_info anchor="bottom" id="Debug" order="9" weight="0.4483945" />
+      <window_info active="true" anchor="bottom" id="Run" order="8" visible="true" weight="0.38876146" />
+      <window_info anchor="bottom" id="Debug" order="9" weight="0.8841743" />
       <window_info anchor="bottom" id="Cvs" order="10" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="11" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="12" />
@@ -301,8 +316,8 @@
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="4" weight="0.25" />
     </layout>
     <layout-to-restore>
-      <window_info id="Favorites" order="0" sideWeight="0.5011468" side_tool="true" weight="0.17470525" />
-      <window_info content_ui="combo" id="Project" order="1" sideWeight="0.4988532" visible="true" weight="0.14951769" />
+      <window_info id="Favorites" order="0" sideWeight="0.5011468" side_tool="true" visible="true" weight="0.17470525" />
+      <window_info content_ui="combo" id="Project" order="1" sideWeight="0.4988532" weight="0.14951769" />
       <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Database Changes" order="0" />
       <window_info anchor="bottom" id="Terminal" order="1" weight="0.32912844" />
@@ -312,8 +327,8 @@
       <window_info anchor="bottom" id="Docker" order="5" show_stripe_button="false" />
       <window_info anchor="bottom" id="Message" order="6" />
       <window_info anchor="bottom" id="Find" order="7" />
-      <window_info active="true" anchor="bottom" id="Run" order="8" visible="true" weight="0.38302752" />
-      <window_info anchor="bottom" id="Debug" order="9" weight="0.4483945" />
+      <window_info active="true" anchor="bottom" id="Run" order="8" visible="true" weight="0.32110092" />
+      <window_info anchor="bottom" id="Debug" order="9" weight="0.51605505" />
       <window_info anchor="bottom" id="Cvs" order="10" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="11" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="12" />
@@ -340,12 +355,13 @@
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/data_mining$mental_health.coverage" NAME="mental_health Coverage Results" MODIFIED="1565246480460" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/code" />
+    <SUITE FILE_PATH="coverage/data_mining$chinese_similarity.coverage" NAME="chinese_similarity Coverage Results" MODIFIED="1566139334096" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/code" />
     <SUITE FILE_PATH="coverage/data_mining$text_mining.coverage" NAME="text_mining Coverage Results" MODIFIED="1565863044743" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/code" />
     <SUITE FILE_PATH="coverage/data_mining$k_menas_exercise.coverage" NAME="k-menas_exercise Coverage Results" MODIFIED="1565854702184" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/code" />
     <SUITE FILE_PATH="coverage/data_mining$copy_excel.coverage" NAME="copy_excel Coverage Results" MODIFIED="1565343626328" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/code" />
     <SUITE FILE_PATH="coverage/data_mining$get_first_col.coverage" NAME="get_first_col Coverage Results" MODIFIED="1565850612113" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../demo" />
     <SUITE FILE_PATH="coverage/data_mining$13df_split.coverage" NAME="13df_split Coverage Results" MODIFIED="1565249292607" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../data_process" />
-    <SUITE FILE_PATH="coverage/data_mining$text_similarity.coverage" NAME="text_similarity Coverage Results" MODIFIED="1566097297696" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/code" />
+    <SUITE FILE_PATH="coverage/data_mining$text_similarity.coverage" NAME="text_similarity Coverage Results" MODIFIED="1566098966128" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/code" />
   </component>
   <component name="debuggerHistoryManager">
     <expressions id="evaluateExpression">
@@ -531,8 +547,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/code/text_mining.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="546">
-          <caret line="41" column="38" selection-start-line="41" selection-start-column="26" selection-end-line="41" selection-end-column="38" />
+        <state relative-caret-position="189">
+          <caret line="18" column="2" lean-forward="true" selection-start-line="18" selection-start-column="2" selection-end-line="18" selection-end-column="8" />
           <folding>
             <element signature="e#0#12#0" expanded="true" />
           </folding>
@@ -541,10 +557,20 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/code/text_similarity.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="69" column="31" selection-start-line="69" selection-start-column="27" selection-end-line="69" selection-end-column="31" />
+        <state relative-caret-position="483">
+          <caret line="89" column="39" selection-start-line="89" selection-start-column="17" selection-end-line="89" selection-end-column="39" />
           <folding>
             <element signature="e#179#227#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/code/chinese_similarity.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-405">
+          <caret line="38" column="14" lean-forward="true" selection-start-line="38" selection-start-column="14" selection-end-line="38" selection-end-column="14" />
+          <folding>
+            <element signature="e#0#12#0" expanded="true" />
           </folding>
         </state>
       </provider>

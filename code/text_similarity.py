@@ -2,6 +2,7 @@
 # （2）每篇文章各取出若干个关键词（比如20个），合并成一个集合，计算每篇文章对于这个集合中的词的词频（为了避免文章长度的差异，可以使用相对词频）；
 # （3）生成两篇文章各自的词频向量；
 # （4）计算两个向量的余弦相似度，值越大就表示越相似。
+#  (5) 这里引入了Latent Semantic Indexing（LSI）从文本潜在的主题来进行分析
 
 from gensim import models, corpora, similarities
 import jieba
@@ -83,11 +84,24 @@ def similarity_compare(n=2):  # n 表示去除词频比较低的单词
     logging.info(f'创建索引后的结果为{index}')
 
     # 8 计算相似度
-    new_vec_tfidf = tfidf[vector]  # 将要比较文档转换为tfidf表示方法
-    logging.info(f'需要比较的文档tfidf 值为{new_vec_tfidf}')
+    need_compare_vec_tfidf = tfidf[vector]  # 将要比较文档转换为tfidf表示方法
+    logging.info(f'需要比较的文档tfidf 值为{need_compare_vec_tfidf}')
     # 计算要比较的文档与语料库中每篇文档的相似度
-    sims = index[new_vec_tfidf]
-    logging.info(f'相似度为{sims}')
+    sims = index[need_compare_vec_tfidf]
+    logging.info(f'TFIDF相似度为{list(enumerate(sims))}')
+
+    # 构建LSI 模型，设置主题数为2
+    lsi = models.LsiModel(corpus_tfidf, id2word=dict, num_topics=2)
+    logging.info(f'lsi 模型主题{lsi.print_topics()}')
+    # 将语料库转化为LSI 模型值
+    lsi_vector = lsi[corpus_tfidf]
+    # 创建LSI模型索引,使用上一步得到的带有LSI的语料库建立索引
+    index2 = similarities.MatrixSimilarity(lsi_vector)
+
+    need_compare_lsi = lsi[vector]
+    logging.info(f'需要比较的文本LSI模型值{need_compare_lsi}')
+    sims_lsi = index2[need_compare_lsi]
+    logging.info(f'LSI相似度为{list(enumerate(sims_lsi))}')
 
 
 if __name__ == '__main__':
