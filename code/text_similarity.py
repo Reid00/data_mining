@@ -47,7 +47,7 @@ def similarity_compare(n=2):  # n 表示去除词频比较低的单词
     texts = [[word for word in text if freq[word] > n] for text in texts]
     logging.info(f'在每个文档里筛选出词频大于n 的单词 {texts}')
 
-    # 3 通过corpora 创建词典
+    # 3 通过corpora 创建词典 词袋模型
     # 创建词典，单词和编号之间的映射
     dict = corpora.Dictionary(texts)
     # 可以保存词典以后使用
