@@ -7,6 +7,9 @@
     <orderEntry type="module" module-name="data_process" />
     <orderEntry type="module" module-name="demo" />
   </component>
+  <component name="PyDocumentationSettings">
+    <option name="renderExternalDocumentation" value="true" />
+  </component>
   <component name="TestRunnerService">
     <option name="projectConfiguration" value="Twisted Trial" />
     <option name="PROJECT_TEST_RUNNER" value="Twisted Trial" />

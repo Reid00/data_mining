@@ -1,42 +1,57 @@
-from sklearn import cluster
-from matplotlib import pyplot as plt
-from matplotlib import image
-from pathlib import Path
+from sklearn.cluster import KMeans
+import numpy as np
+import matplotlib.pyplot as plt
+import logging
+logging.basicConfig(format='%(asctime)s : %(levelname)s : %(message)s', level=logging.INFO)
 
-root = Path.cwd()
-input = root / '..' / 'input'
-output = root / '..' / 'output'
 
-# 获取image 路径
-img_paths = input.glob('*.png')
+def exercise():
+    """方法fit_predict的作用是计算聚类中心,并为输入的数据加上分类标签
+    fit方法的使用，它仅仅产生聚类中心（其实也就是建模），然后我们引入两个新的点，并利用已经建立的模型预测它们的分类情况
+    """
+    # 获取模拟数据
+    x = np.random.rand(100, 2)
 
-# 读取图片
-for img_path in img_paths:
-    img = image.imread(r'D:\v-baoz\python\data_mining\input\img.png')
-    # img = image.imread(img_path)
-    # 将图片转换为像素向量
-    orig_shape = img.shape
-    # img = img.reshape((-1, 3))
-    plt.close()
-    plt.axis('off')
-    plt.imshow(img.reshape(orig_shape))
-    orig = output / 'orig.png'
-    plt.savefig(orig)
+    # n_clusters 表示聚类数目，random_state 产生随机数的方法
+    # y_pred = KMeans(n_clusters=3, random_state=0).fit_predict(x)
+    # 聚类聚为3类
+    estimator = KMeans(n_clusters=3)
+    # fit_predict表示拟合+预测
+    res = estimator.fit_predict(x)
+    # 预测类别标签结果
+    label_pred = estimator.labels_
+    # 各个类别的聚类中心值
+    centroids = estimator.cluster_centers_
+    # 聚类中心均值向量的总和
+    inertia = estimator.inertia_
 
-    for k in range(2, 10):
-        # 创建运行k-means 算法对象
-        kmeans_fitter = cluster.KMeans(n_clusters=k)
-        # 运行k-means 算法
-        kmeans_fitter.fit(img)
-        # 得到每个像素所在的组
-        kmeans_grp = kmeans_fitter.labels_
-        # 得到每个聚类的中心
-        kmeans_centroids = kmeans_fitter.cluster_centers_
-        # 将每个像素替换为聚类中心
-        result = kmeans_centroids[kmeans_grp]
-        # 显示图片
-        plt.close()
-        plt.axis('off')
-        plt.imshow(result.reshape(orig_shape))
-        transformed = output / f'transformed_{(k,)}.png'
-        plt.savefig(transformed)
+    #
+    logging.info(label_pred)
+    logging.info(centroids)
+    logging.info(inertia)
+
+    # 通过图形化展示聚类效果
+    for i in range(len(x)):
+        if int(label_pred[i]) == 0:
+            plt.scatter(x[i][0], x[i][1], color='red', marker='x')
+        if int(label_pred[i]) == 1:
+            plt.scatter(x[i][0], x[i][1], color='black', marker='s')
+        if int(label_pred[i]) == 2:
+            plt.scatter(x[i][0], x[i][1], color='blue', marker='o')
+    plt.show()
+
+    # fit method
+    # 训练
+    kmeans = KMeans(n_clusters=2, random_state=0).fit(x)
+
+    new_data = np.array([[3, 3],
+                         [15, 15]])
+    # 预测
+    color = ('red', 'yellow')
+    colors_2 = np.array(color)[kmeans.predict([[3, 3], [15, 15]])]
+    plt.scatter(new_data[:, 0], new_data[:, 1], c=colors_2, marker='x')
+    plt.show()
+
+
+if __name__ == '__main__':
+    exercise()
