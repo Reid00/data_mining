@@ -9,6 +9,38 @@ from sklearn.metrics import confusion_matrix,classification_report
 from sklearn.metrics import roc_auc_score
 from matplotlib.colors import ListedColormap
 
+def plot_confusion_matrix(cm, classes, normalize=False, title='Confusion matrix', cmap=plt.cm.get_cmap('Pastel1')):
+    """
+    This function prints and plots the confusion matrix.
+    Normalization can be applied by setting `normalize=True`.
+    Input
+    - cm : 计算出的混淆矩阵的值
+    - classes : 混淆矩阵中每一行每一列对应的列
+    - normalize : True:显示百分比, False:显示个数
+    """
+    if normalize:
+        cm = cm.astype('float') / cm.sum(axis=1)[:, np.newaxis]
+        print("Normalized confusion matrix")
+    else:
+        print('Confusion matrix, without normalization')
+    print(cm)
+    plt.imshow(cm, interpolation='nearest', cmap=cmap)
+    plt.title(title)
+    plt.colorbar()
+    tick_marks = np.arange(len(classes))
+    plt.xticks(tick_marks, classes, rotation=45)
+    plt.yticks(tick_marks, classes)
+    fmt = '.2f' if normalize else 'd'
+    thresh = cm.max() / 2.
+    for i, j in itertools.product(range(cm.shape[0]), range(cm.shape[1])):
+        plt.text(j, i, format(cm[i, j], fmt),
+                 horizontalalignment="center",
+                 color="white" if cm[i, j] > thresh else "black")
+    plt.tight_layout()
+    plt.ylabel('True label')
+    plt.xlabel('Predicted label')
+    plt.show()
+
 dataset=pd.read_csv(r'D:\python\GitRepository\100-Days-Of-ML-Code\datasets\Social_Network_Ads.csv')
 print(dataset.head())
 print(dataset.describe())
@@ -41,6 +73,10 @@ y_pred=classifier.predict(X_test)
 from sklearn.metrics import confusion_matrix,classification_report
 cm = confusion_matrix(y_test,y_pred)
 cr= classification_report(y_test,y_pred)
+
+#可视化混淆矩阵
+classes=dataset.iloc[:,4].unique().tolist()
+plot_confusion_matrix(cm,classes)
 
 # 打印混淆矩阵 cm 以及分析结果（准确率，召回率，F1值）cr：
 print(cm,'\n',cr)
