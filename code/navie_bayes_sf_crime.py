@@ -135,3 +135,147 @@ if __name__ == '__main__':
     test_data = feature_engineer(test)
     navie_bayes(train_data)
     # logistic(train_data)
+
+### 第二种详细训练方式
+
+import re
+import numpy as np
+import pandas as pd
+from pathlib import Path
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import LabelEncoder
+from sklearn.preprocessing import OneHotEncoder
+from sklearn.metrics import confusion_matrix,classification_report,roc_auc_score
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.metrics import log_loss
+import lightgbm as lgbm
+
+def load_data(path):
+    data = pd.read_csv(path,sep=',',encoding='utf-8',parse_dates=['Dates'])
+    return data
+
+# 根据时间进行季节划分
+def season(month):
+    if (month<3 or month>=12):
+        return 1  # 冬季
+    if (month >=3 and month < 6):
+        return 2  # 春季
+    if (month >=6 and month <9):
+        return 3  # 夏季
+    if (month >=9 and month < 12):
+        return 4  # 秋季
+
+# 根据时间进行时段的划分
+def hour_box(hour):
+    if (hour>=1 and hour <8 ):
+        return 1
+    if (hour >=8 and hour<12):
+        return 2
+    if (hour>=12 and hour<13):
+        return 3
+    if (hour>=13 and hour<18):
+        return 4
+    if (hour >= 18 and hour <20):
+        return 5
+    if (hour >= 20 or hour <1):
+        return 6
+
+# 地址中是否包含 /
+def address_type(addr):
+    if '/'in addr:
+        return 0
+    else:
+        return 1
+
+# 地址是否包含门牌号
+def address_num(addr):
+    pattern = re.compile(r'\d+')
+    res=re.findall(pattern,addr)
+    if len(res)==0:
+        return 0
+    else:
+        return res[0]
+
+def feature_engineer(data):
+    le = LabelEncoder()
+    # onehot = OneHotEncoder(sparse=False)
+    #去重
+    print('重复数据的数量为:',data.duplicated().sum())
+    data.drop_duplicates(inplace=True)
+    print('去重后的数量为:',data.shape[0])
+
+    # 将目标变量设置为二分类
+    data.loc[data['Category']=='LARCENY/THEFT','Cates'] = 1
+    data.loc[data['Category']=='OTHER OFFENSES','Cates'] = 0
+
+    # 根据时间进行季节划分
+    data['Year']=data['Dates'].dt.year
+    data['Month']=data['Dates'].dt.month
+    data['Day']=data['Dates'].dt.day
+    data['Hour']=data['Dates'].dt.hour
+    data['Weekofyear']=data['Dates'].dt.weekofyear
+
+    # 获取季节信息
+    data['Season'] = data['Month'].apply(season)
+    # onehot.fit(data['Season'].values.reshape(-1,1))
+    # data['Season_encoder'] = onehot.transform(data['Season'])
+    # 增加时段特征
+    data['Hour_box'] =data['Hour'].apply(hour_box)
+    # data['Hour_box_encoder']= onehot.fit_transform(data['Hour_box'].values.reshape(-1,1))
+    # dayofweek 进行梳理
+    data['DayOfWeek_encoder'] = le.fit_transform(data['DayOfWeek'])
+    # data['DayOfWeek_encoder'] = onehot.fit_transform(data['DayOfWeek_encoder'].values.reshape(-1,1))
+
+    #是否是周末
+    weekend = weekend= {'Monday':0., 'Tuesday':0., 'Wednesday':0., 'Thursday': 0., 'Friday':0., 'Saturday':1., 'Sunday':1}
+    data['Weekend'] = data['DayOfWeek'].replace(weekend)
+
+    # PdDistrict,Descript 数据编码
+    data['PdDistrict_encoder'] = le.fit_transform(data['PdDistrict'])
+    data['Descript_encoder'] = le.fit_transform(data['Descript'])
+
+    # 地址相关信息处理
+    data['Addr_type'] = data['Address'].apply(address_type)
+    # data['Addr_type'] = onehot.fit_transform(data['Addr_type'].values.reshape(-1,1))
+    data['Addr_num'] =data['Address'].apply(address_num)
+
+    # 二分类的数据
+    data = data.loc[(data['Cates']==1) | (data['Cates']==0)]
+
+    return data
+
+def model_training(data):
+    # 将数据划分为训练集和测试集
+    X=data.drop(columns=['Dates','Cates','Category','Descript','DayOfWeek','PdDistrict','Resolution','Address','Hour','Season','Hour_box'])
+    y = data['Cates']
+    X_train,X_test,y_train,y_test = train_test_split(X,y, test_size=0.2)
+    rfc = RandomForestClassifier(n_estimators=200,oob_score=True,min_samples_leaf=200,min_samples_split=200)
+    print(r'training model, please waiting...')
+    rfc.fit(X_train.values,y_train.values)
+
+    y_predprob = rfc.predict_proba(X_test.values)
+    y_pred= rfc.predict(X_test.values)
+
+    # log_loss = sklearn.metrics.log_loss(y_test,y_predprob)
+    cm = confusion_matrix(y_test,y_pred)
+    cr = classification_report(y_test,y_pred)
+    auc = roc_auc_score(y_test,y_pred)
+
+    importance= rfc.feature_importances_
+    features = sorted(zip(map(lambda x: round(x,4),importance),X_train.columns.tolist()))
+    print('随机森林模型的特征排名:',features)
+    # print('随机森林模型训练的log 损失值为:',log_loss)
+    print('随机森林模型的cm:\n',cm)
+    print('随机森林模型的cr:\n',cr)
+    print('随机森林模型的auc:\n',auc)
+    print('随机森林模型的oob_score:',rfc.oob_score_)
+
+def main():
+    root = Path.cwd()
+    path= root / r'data_mining-master\input\sf-crime\train.csv'
+    data=load_data(path)
+    binary_data=feature_engineer(data)
+    model_training(binary_data)
+
+if __name__ == "__main__":
+    main()
