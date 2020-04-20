@@ -270,6 +270,39 @@ def model_training(data):
     print('随机森林模型的auc:\n',auc)
     print('随机森林模型的oob_score:',rfc.oob_score_)
 
+## lightGBM 多元分类
+
+import lightgbm as lgb
+from sklearn.metrics import mean_squared_error
+
+gbm=lgb.LGBMClassifier(objective='multiclass',n_estimators=100,num_leaves=31,learning_rate=0.5)
+
+gbm.fit(X_train.values,y2_train.values,eval_set=[(X_test, y2_test)], eval_metric='logloss', early_stopping_rounds=10)
+
+# # 模型存储
+# joblib.dump(gbm, 'loan_model.pkl')
+# # 模型加载
+# gbm = joblib.load('loan_model.pkl')
+
+# y_predproba=gbm.predict_proba(X_test.values,num_iteration=gbm.best_iteration_)
+y_pred=gbm.predict(X_test.values,num_iteration=gbm.best_iteration_)
+# loss_lr=log_loss(y2_test,y_predproba)
+cm=confusion_matrix(y2_test,y_pred)
+cr=classification_report(y2_test,y_pred)
+# auc=roc_auc_score(y2_test,y_pred)
+
+# 模型评估
+# print('The rmse of prediction is:', mean_squared_error(y_test, y_pred) ** 0.5)
+
+print('gbm 的 cm:',cm)
+plt.figure(figsize=(14,8))
+sns.heatmap(cm,annot=True)
+plt.show()
+print('gbm 的 cr:',cr)
+# print('gbm 的 auc:', auc)
+
+# print('GBDT模型的oob_score:',model_rfc.oob_score_)    
+    
 def main():
     root = Path.cwd()
     path= root / r'data_mining-master\input\sf-crime\train.csv'
